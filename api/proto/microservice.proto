@@ -1,0 +1,42 @@
+syntax = "proto3"; 
+
+package api;
+
+option go_package = "./";
+
+service Microservice {
+    rpc AddUser(AddUserRequest) returns (AddUserResponse) { }
+    rpc FetchAllUsers(Empty) returns (FetchAllUsersResponse) { }
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) { }
+}
+
+message User {
+    int32 uid = 1;
+    string name = 2;
+}
+
+message AddUserRequest {
+    User user = 1;
+}
+
+message AddUserResponse {
+    User user = 1;
+}
+
+message DeleteUserRequest {
+    int32 uid = 1;
+}
+
+message DeleteUserResponse {
+    int32 uid = 1;
+}
+
+message FetchAllUsersResponse {
+    repeated User user = 1;
+}
+
+message Empty {
+    
+}
+
+
